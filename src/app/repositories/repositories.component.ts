@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepositoriesComponent implements OnInit {
 
+  repositories : any = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.repositories = [
+      {name: "Angular code for CF", description: "Proyecto demo de CF y Angular"},
+      {name: "Bootstrap", description: "Frontend Framework"},
+      {name: "PHP Ecommerce", description: "Código del curso Ecommerce"},
+      {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
+    ];
   }
 
 }
