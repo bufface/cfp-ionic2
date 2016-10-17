@@ -10,6 +10,7 @@ export class RepositoriesComponent implements OnInit {
 
   repositories : any = [];
   repository : IRepository;
+  newRepository : IRepository = {name: "", description: ""};
 
   constructor() { }
 
@@ -23,11 +24,18 @@ export class RepositoriesComponent implements OnInit {
         {name: "PHP Ecommerce", description: "Código del curso Ecommerce"},
         {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
       ];
+
+      this.newRepository.name = "Hola desde la funcionalidad";
     }, 3000);
   }
 
   setMainRepository(repository) {
     this.repository = repository;
+  }
+
+  addNewRepo() {
+    this.repositories.unshift(this.newRepository);
+    this.newRepository = {name: "", description: ""};
   }
 }
 
