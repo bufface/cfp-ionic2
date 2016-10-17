@@ -24,8 +24,6 @@ export class RepositoriesComponent implements OnInit {
         {name: "PHP Ecommerce", description: "Código del curso Ecommerce"},
         {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
       ];
-
-      this.newRepository.name = "Hola desde la funcionalidad";
     }, 3000);
   }
 
