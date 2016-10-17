@@ -5,13 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './repositories.component.html',
   styleUrls: ['./repositories.component.css']
 })
+
 export class RepositoriesComponent implements OnInit {
 
   repositories : any = [];
+  repository : IRepository;
 
   constructor() { }
 
   ngOnInit() {
+    this.repository = {name: "Angular code for CF", description: "Proyecto demo de CF y Angular"};
+
     setTimeout(() => {
       this.repositories = [
         {name: "Angular code for CF", description: "Proyecto demo de CF y Angular"},
@@ -20,9 +24,14 @@ export class RepositoriesComponent implements OnInit {
         {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
       ];
     }, 3000);
-
-    setTimeout(() => {
-      this.repositories = [];
-    }, 5000);
   }
+
+  setMainRepository(repository) {
+    this.repository = repository;
+  }
+}
+
+interface IRepository {
+  name: string,
+  description: string
 }
