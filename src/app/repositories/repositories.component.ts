@@ -12,12 +12,17 @@ export class RepositoriesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.repositories = [
-      {name: "Angular code for CF", description: "Proyecto demo de CF y Angular"},
-      {name: "Bootstrap", description: "Frontend Framework"},
-      {name: "PHP Ecommerce", description: "Código del curso Ecommerce"},
-      {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
-    ];
-  }
+    setTimeout(() => {
+      this.repositories = [
+        {name: "Angular code for CF", description: "Proyecto demo de CF y Angular"},
+        {name: "Bootstrap", description: "Frontend Framework"},
+        {name: "PHP Ecommerce", description: "Código del curso Ecommerce"},
+        {name: "Ruby code", description: "Código con ejemplos del curso de Ruby"}
+      ];
+    }, 3000);
 
+    setTimeout(() => {
+      this.repositories = [];
+    }, 5000);
+  }
 }
