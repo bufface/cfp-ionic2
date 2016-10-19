@@ -5,8 +5,9 @@
 /tmp
 
 # dependencies
-/node_modules
-/bower_components
+Angular\ 2/node_modules
+Angular\ 2/bower_components
+/MoneyMap/node_modules
 
 # IDEs and editors
 /.idea
