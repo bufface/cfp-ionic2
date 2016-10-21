@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Transaction } from '../../database'
 
 /*
   Generated class for the Transactions page.
@@ -18,7 +19,6 @@ export class Transactions {
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello Transactions Page');
-  }
 
+  }
 }

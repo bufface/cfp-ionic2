@@ -1,14 +1,16 @@
-import Dixie from 'dixie';
+import Dexie from 'dexie';
 
-export class TransactionAppDB extends Dixie {
+export class TransactionAppDB extends Dexie {
+  transactions: Dexie.Table<ITransaction, number>;
   constructor() {
-    super("MoneyMapAppDB")
+    super('MoneyMapAppDB');
 
     this.version(1).stores({
       transactions: '++id,amount,lat,lng,title,imageUrl'
     });
-  }
 
+    this.transactions.mapToClass(Transaction);
+  }
 }
 
 export interface ICategory {
@@ -23,3 +25,28 @@ export interface ITransaction {
   title: string;
   imageUrl: string;
 }
+
+export class Transaction implements ITransaction {
+  id?: number;
+  amount: number;
+  lat: number;
+  lng: number;
+  title: string;
+  imageUrl: string;
+
+  constructor(amount: number, title: string, id?: number, lat?: number, lng?: number, imageUrl?: string) {
+    this.amount = amount;
+    this.title = title;
+
+    if (id) this.id = id;
+    if (lat) this.lat = lat;
+    if (lng) this.lng = lng;
+    if (imageUrl) this.imageUrl = imageUrl;
+  }
+
+  save() {
+    return db.transactions.add(this);
+  }
+}
+
+export let db = new TransactionAppDB();
