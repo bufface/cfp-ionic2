@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Transaction } from '../../database';
 
 /*
   Generated class for the Adding page.
@@ -13,10 +14,15 @@ import { NavController } from 'ionic-angular';
 })
 export class Adding {
 
+  model: Transaction;
+
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello Adding Page');
+    this.model = new Transaction(null, '');
   }
 
+  save() {
+    this.model.save()
+  }
 }
