@@ -24,5 +24,9 @@ export class Adding {
 
   save() {
     this.model.save()
+      .then(resp => {
+        this.model = new Transaction(null, '');
+        this.navCtrl.pop();
+      })
   }
 }

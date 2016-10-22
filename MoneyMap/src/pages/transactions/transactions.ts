@@ -21,7 +21,7 @@ export class Transactions {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.loadTransactions();
   }
 
@@ -29,7 +29,6 @@ export class Transactions {
     Transaction.all()
               .then((resp) => {
                 this.transactions = resp;
-                console.log(this.transactions);
               })
   }
 }
