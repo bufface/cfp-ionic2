@@ -15,10 +15,19 @@ import { Transaction } from '../../database'
 export class Transactions {
 
   title: string = "Movimientos";
+  transactions: any;
 
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
+    this.loadTransactions();
+  }
 
+  loadTransactions() {
+    Transaction.all()
+              .then((resp) => {
+                this.transactions = resp;
+                console.log(this.transactions);
+              })
   }
 }
