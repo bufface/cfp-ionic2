@@ -16,15 +16,23 @@ import { GeolocationService } from '../../services/geolocation.service';
 export class Adding {
 
   model: Transaction;
+  shouldGeolocate: boolean = false;
 
   constructor(public navCtrl: NavController, public geolocator: GeolocationService) {}
 
   ionViewDidLoad() {
     this.model = new Transaction(null, '');
+  }
 
-    this.geolocator.get().then((res) => {
-      console.log(res);
-    }).catch((err) => console.log(err));
+  getLocation() {
+    if (this.shouldGeolocate) {
+      this.geolocator.get().then((res) => {
+        this.model.setCoords(res.coords);
+        console.log(this.model);
+      }).catch((err) => console.log(err));
+    } else {
+      this.model.cleanCoords();
+    }
   }
 
   save() {

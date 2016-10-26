@@ -48,6 +48,16 @@ export class Transaction implements ITransaction {
     return db.transactions.add(this);
   }
 
+  setCoords(coords) {
+    this.lat = coords.latitude;
+    this.lng = coords.longitude;
+  }
+
+  cleanCoords() {
+    this.lat = null;
+    this.lng = null;
+  }
+
   static all() {
     return db.transactions.orderBy('id').reverse().toArray();
   }
