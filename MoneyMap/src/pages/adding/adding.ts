@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Transaction } from '../../database';
+import { GeolocationService } from '../../services/geolocation.service';
 
 /*
   Generated class for the Adding page.
@@ -16,10 +17,14 @@ export class Adding {
 
   model: Transaction;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public geolocator: GeolocationService) {}
 
   ionViewDidLoad() {
     this.model = new Transaction(null, '');
+
+    this.geolocator.get().then((res) => {
+      console.log(res);
+    }).catch((err) => console.log(err));
   }
 
   save() {

@@ -8,7 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Transactions } from '../pages/transactions/transactions';
 import { Adding } from '../pages/adding/adding';
 import { Map } from '../pages/map/map';
-import { GeolocationService } from '../services/GeolocationService'
+import { GeolocationService } from '../services/geolocation.service'
 
 @NgModule({
   declarations: [
