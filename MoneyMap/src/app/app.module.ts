@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Transactions } from '../pages/transactions/transactions';
 import { Adding } from '../pages/adding/adding';
 import { Map } from '../pages/map/map';
+import { GeolocationService } from '../services/GeolocationService'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,6 @@ import { Map } from '../pages/map/map';
     Adding,
     Map
   ],
-  providers: []
+  providers: [GeolocationService]
 })
 export class AppModule {}
