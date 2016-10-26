@@ -15,7 +15,7 @@ import { GeolocationService } from '../../services/geolocation.service';
 })
 export class Map {
 
-  constructor(public navCtrl: NavController, , public geolocator: GeolocationService) {}
+  constructor(public navCtrl: NavController, public geolocator: GeolocationService) {}
 
   ionViewDidLoad() {
     this.geolocator.get().then((res) => {
