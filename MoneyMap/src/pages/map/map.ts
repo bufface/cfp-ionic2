@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {GoogleMap, GoogleMapsEvent, GoogleMapsLatLng} from 'ionic-native';
+import { GeolocationService } from '../../services/geolocation.service';
 
 /*
   Generated class for the Map page.
@@ -13,10 +15,36 @@ import { NavController } from 'ionic-angular';
 })
 export class Map {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, , public geolocator: GeolocationService) {}
 
   ionViewDidLoad() {
-    console.log('Hello Map Page');
+    this.geolocator.get().then((res) => {
+      this.loadMap(res.coords.latitude, res.coords.longitude);
+    }).catch((err) => console.log(err));
   }
 
+  loadMap(lat, lng) {
+    let location: GoogleMapsLatLng = new GoogleMapsLatLng(lat, lng);
+
+    new GoogleMap('map', {
+      'controls': {
+        'compass': true,
+        'myLocationButton': true,
+        'indoorPicker': true,
+        'zoom': true
+      },
+      'gestures': {
+        'scroll': true,
+        'tilt': true,
+        'rotate': true,
+        'zoom': true
+      },
+      'camera': {
+        'latLng': location,
+        'tilt': 30,
+        'zoom': 15,
+        'bearing': 50
+      }
+    });
+  }
 }
