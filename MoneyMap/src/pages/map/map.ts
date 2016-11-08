@@ -20,7 +20,7 @@ export class Map {
 
   constructor(public navCtrl: NavController, public geolocator: GeolocationService) {}
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.geolocator.get().then((res) => {
       this.loadMap(res.coords.latitude, res.coords.longitude);
     }).catch((err) => console.log(err));
